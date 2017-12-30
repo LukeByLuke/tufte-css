@@ -2,6 +2,10 @@
     margin: 0;
 }
 
+html {
+    /* overflow: hidden; */
+}
+
 html, body {
     height: 100%;
 }
@@ -14,9 +18,22 @@ body {
 
 /* remove underbar on hover with links */
 a:link:hover, a:visited:hover {
-    -webkit-background-size: 0.05em 1px, 0.05em 1px, 0px 0px;
-    -moz-background-size: 0.05em 1px, 0.05em 1px, 0px 0px;
-    background-size: 0.05em 1px, 0.05em 1px, 0px 0px;
+    color: #888;
+    text-decoration: none;
+    background: -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(#888, #888);
+    background: linear-gradient(#fffff8, #fffff8), linear-gradient(#fffff8, #fffff8), linear-gradient(#888, #888);
+    -webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+    -moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+    background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    text-shadow: 0.03em 0 #fffff8, -0.03em 0 #fffff8, 0 0.03em #fffff8, 0 -0.03em #fffff8, 0.06em 0 #fffff8, -0.06em 0 #fffff8, 0.09em 0 #fffff8, -0.09em 0 #fffff8, 0.12em 0 #fffff8, -0.12em 0 #fffff8, 0.15em 0 #fffff8, -0.15em 0 #fffff8;
+    background-position: 0% 93%, 100% 93%, 0% 93%; 
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    a:link:hover, a:visited:hover {
+        background-position-y: 87%, 87%, 87%;
+    }
 }
 
 /* styling of meta content in blog posts  */
@@ -42,28 +59,29 @@ span.content-meta {
     color: #fffff8;
 }
 
-.mainHeader a:link {
+.mainHeader a:link, .mainHeader a:visited, 
+.page-footer a:link, .page-footer a:visited {
     text-shadow: 0.03em 0 #111, -0.03em 0 #111, 0 0.03em #111, 0 -0.03em #111, 0.06em 0 #111, -0.06em 0 #111, 0.09em 0 #111, -0.09em 0 #111, 0.12em 0 #111, -0.12em 0 #111, 0.15em 0 #111, -0.15em 0 #111;
     background: -webkit-linear-gradient(#fffff8, #fffff8);
     background: linear-gradient(#fffff8, #fffff8);
     color: #fffff8;
     text-decoration: none;
-    -webkit-background-size: 1px 1px;
-    -moz-background-size: 1px 1px;
-    background-size: 1px 1px;
+    -webkit-background-size: 0px 0px;
+    -moz-background-size: 0px 0px;
+    background-size: 0px 0px;
     background-repeat: repeat-x;
     background-position: 0% 93%;
+}
+
+.mainHeader a:link:hover, .mainHeader a:visited:hover,
+.page-footer a:link:hover, .page-footer a:visited:hover {
+    color: #ccc;
 }
 
 footer.page-footer p {
     color: #fffff8;
     font-size: .8rem;
-}
-
-.mainHeader a:link:hover {
-    -webkit-background-size: 0px 0px;
-    -moz-background-size: 0px 0px;
-    background-size: 0px 0px;
+    margin-bottom: 0px;
 }
 
 .logo {
@@ -236,7 +254,7 @@ div.paginator-container p {
 div.content {
     min-height: 100%;
     /* equal to footer height */
-    margin-bottom: -50px; 
+    margin-bottom: -100px; 
     position: relative;
 }
 
@@ -246,8 +264,8 @@ div.content:after {
 }
 
 footer.page-footer, div.content:after {
-    height: 50px;
-    max-height: 50px !important;
+    height: 100px;
+    max-height: 100px !important;
 }
 
 footer.page-footer {
@@ -258,9 +276,14 @@ footer.page-footer {
     right: 0;
     overflow: hidden;
     text-align: center;
+
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.footer-social {
+    font-size: 2rem;
 }
 
 @media (max-width: 760px) {
